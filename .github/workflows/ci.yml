@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        db: [mysql, postgres]
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: blackcat_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: blackcat_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres -d blackcat_test -h 127.0.0.1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, json, dom, curl, pdo, pdo_mysql, pdo_pgsql
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Init blackcat-database packages
+        run: |
+          git -C vendor/blackcatacademy/blackcat-database submodule update --init packages/tenants packages/users packages/orders packages/order-items packages/payments packages/payment-webhooks packages/idempotency-keys
+          composer dump-autoload -o
+
+      - name: Static analysis
+        run: vendor/bin/phpstan analyse --configuration=phpstan.neon
+
+      - name: Tests (unit + integration)
+        env:
+          DB_DSN: ${{ matrix.db == 'mysql' && 'mysql:host=127.0.0.1;port=3306;dbname=blackcat_test;charset=utf8mb4' || 'pgsql:host=127.0.0.1;port=5432;dbname=blackcat_test' }}
+          DB_USER: ${{ matrix.db == 'mysql' && 'root' || 'postgres' }}
+          DB_PASSWORD: ${{ matrix.db == 'mysql' && 'root' || 'postgres' }}
+        run: vendor/bin/phpunit
