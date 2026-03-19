@@ -171,7 +171,7 @@ Unless a narrower rule is separately and clearly authorized in the published fee
 
 ## 7B. Order of Precedence
 
-Unless a final adopted license states otherwise, the intended order of precedence for conflicting terms is:
+Unless a later valid replacement license states otherwise, the order of precedence for conflicting terms is:
 
 1. a signed written waiver or transfer expressly authorized under this license;
 2. this license;
@@ -325,13 +325,19 @@ THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIE
 
 TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSOR SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR FOR LOST PROFITS, REVENUE, DATA, OR BUSINESS INTERRUPTION.
 
-## 19. Governing Law
+## 19. Governing Law, Language, and Forum
 
-This license shall be governed by the laws of the Slovak Republic, excluding conflict-of-law rules, unless the final adopted version states otherwise.
+This license shall be governed by the laws of the Slovak Republic, excluding conflict-of-law rules.
+
+The authoritative language of this license and its active companion documents is English. Translations may be published for convenience only.
+
+Exclusive jurisdiction and venue for disputes arising out of or relating to this license, its active companion documents, contributor terms, registry operations, or official trademark use shall lie in the courts located in Bratislava, Slovak Republic, or their lawful successor courts with subject-matter jurisdiction.
+
+Nothing in this section prevents the Licensor, founder-controlled entity, Steward, or Lawful Successor from seeking urgent provisional or injunctive relief where reasonably necessary to stop impersonation, key compromise, payment-address fraud, active trademark misuse, or material security abuse.
 
 ## 20. Entire Agreement and Companion Documents
 
-This license is intended to operate together with the active companion documents published for the Covered System, including the fee policy, trademark policy, registry terms, contributor terms, notice-channel rules, dispute-resolution rules, system-scope policy, affordability baseline, anti-circumvention policy, and the tracked licensing system notice.
+This license is intended to operate together with the active companion documents published for the Covered System, including the fee policy, trademark policy, registry terms, contributor terms, notice-channel rules, dispute-resolution rules, notice-signing workflow, system-scope policy, affordability baseline, anti-circumvention policy, and the tracked licensing system notice.
 
 Section 7B controls the order of precedence for conflicts among those materials.
 
