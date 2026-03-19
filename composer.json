@@ -50,5 +50,14 @@
     "phpstan/phpstan": "^1.11"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "support": {
+    "docs": "https://github.com/Vito416/blackcat-darkmesh-ao/blob/main/docs/BFNL-1.0.md",
+    "source": "https://github.com/Vito416/blackcat-gopay"
+  },
+  "extra": {
+    "blackcat-license": "BFNL-1.0",
+    "blackcat-covered-system-notice": "https://github.com/Vito416/blackcat-darkmesh-ao/blob/main/docs/LICENSING_SYSTEM_NOTICE.md",
+    "blackcat-founder-fee-policy": "https://github.com/Vito416/blackcat-darkmesh-ao/blob/main/docs/FEE_POLICY.md"
+  }
 }
